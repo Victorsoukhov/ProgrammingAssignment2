@@ -1,7 +1,7 @@
 ## Matrix inversion is usually a costly computation and there may be 
 ## some benefit to caching the inverse of a matrix rather than compute it repeatedly
 
-## Fill initial cach of matrix inversion. Activates get set functions for use.
+## Fill initial cache of matrix inversion. Activates get set functions for use.
 # set the value of the matrix
 # get the value of the matrix
 # setinvert the value of the invertion
@@ -31,10 +31,10 @@ makeCacheMatrix <- function(x = matrix()) {
 
 cacheSolve <- function(x, ...) {
     m <- x$getinvert()
-    if (is.null (m)){
-        data <- x$get()
-        m <- solve(data)
-        x$setinvert(m)
+    if (is.null (m)){     #matrix not in cach
+        data <- x$get()   #get original matrix
+        m <- solve(data)  #invert matrix
+        x$setinvert(m)    #cache inverted matrix
     }else {
         message ("getting cached data")
     }
